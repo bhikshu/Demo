@@ -9,11 +9,11 @@ pipeline {
             }
         }
        stage('Login') {
-
+       steps{
         withDockerRegistry([ credentialsId: "dockerhubid", url: "https://hub.docker.com" ]) {
         dockerImage.push()
         }
-        
+       }
 		}
 
 		stage('Push') {
