@@ -10,7 +10,7 @@ pipeline {
        stage('Login') {
 
 			steps {
-				sh 'docker login -u bhikshu -p Lakshmirao@10 https://hub.docker.com'
+				sh 'docker login -u bhikshu --password-stdin Lakshmirao@10 https://hub.docker.com'
 			}
 		}
 
