@@ -1,6 +1,9 @@
 #!groovy
 pipeline {
-    agent any 
+    agent any
+    environment {     
+    DOCKERHUB_CREDENTIALS= credentials('dockerhubid')     
+  }
     stages {
         stage('Docker Build') { 
             steps {
@@ -10,11 +13,8 @@ pipeline {
        stage('Login') {
 
 			steps {
-			   script{
-				   sh"""
-				   docker login -u=bhikshu --password-stdin=Lakshmirao@10 https://hub.docker.com
-                                   """
-                          }
+                          sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'                 
+	                  echo 'Login Completed'
 			}
 		}
 
