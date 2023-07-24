@@ -1,5 +1,10 @@
 #!groovy
 pipeline {
+environment {
+registry = "https://hub.docker.com"
+registryCredential = 'dockerhubid'
+dockerImage = ''
+}
     agent any
 
     stages {
@@ -8,12 +13,15 @@ pipeline {
               sh 'docker build -t bhikshu/devops_test1:tomcat .'
             }
         }
-       stage('Login') {
+      stage('Deploy our image') {
        steps{
-        withDockerRegistry([ credentialsId: "dockerhubid", url: "https://hub.docker.com" ]) {
-        dockerImage.push()
-        }
-       }
+         script {
+           docker.withRegistry( '', registryCredential ) {
+           dockerImage.push()
+}
+}
+}
+} 
 		}
 
 		stage('Push') {
