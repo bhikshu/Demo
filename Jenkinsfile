@@ -7,13 +7,20 @@ pipeline {
               sh 'docker build -t bhikshu/devops_test1:tomcat .'
             }
         }
-        stage('push') { 
-            steps {
-            script{docker.withRegistry('https://hub.docker.com/','dockerhubid') 
-            image.push()
-                
-            }
-        }
+       stage('Login') {
+
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
+
+		stage('Push') {
+
+			steps {
+				sh 'docker push bhikshu/devops_test1:tomcat'
+			}
+		}    
+        
         
     }
  }
