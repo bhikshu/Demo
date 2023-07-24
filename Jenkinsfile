@@ -2,7 +2,7 @@
 pipeline {
     agent any 
     stages {
-        stage(''Docker Build') { 
+        stage('Docker Build') { 
             steps {
               sh 'docker build -t bhikshu/devops_test1:tomcat .'
             }
