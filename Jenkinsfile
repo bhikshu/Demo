@@ -1,9 +1,7 @@
 #!groovy
 pipeline {
     agent any
-    environment {     
-    DOCKERHUB_CREDENTIALS= credentials('dockerhubid')     
-  }
+
     stages {
         stage('Docker Build') { 
             steps {
