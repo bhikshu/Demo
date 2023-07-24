@@ -13,6 +13,7 @@ pipeline {
 			   script{
 				   sh"""
 				   docker login -u bhikshu --password-stdin Lakshmirao@10 https://hub.docker.com
+                                   """
                           }
 			}
 		}
