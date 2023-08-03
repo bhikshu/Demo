@@ -10,7 +10,7 @@ pipeline {
  stages{
     stage('docker build') {
       steps {
-        sh 'docker build -t bhikshu/devops_test1:tomcat .'
+        sh 'docker build -t bhikshu/devops_test1:tomcat2 .'
       }
     } 
     
