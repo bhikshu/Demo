@@ -21,7 +21,7 @@ pipeline {
     }
     stage('Push') {
       steps {
-        sh 'docker push bhikshu/devops_test1:tomcat'
+        sh 'docker push bhikshu/devops_test1:tomcat2'
       }
     }
   
